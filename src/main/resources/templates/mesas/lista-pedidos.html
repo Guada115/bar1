@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pedidos de Mesa</title>
+</head>
+<body>
+<h1>Pedidos de Mesa <span th:text="${mesa.id}"></span></h1>
+<table border="1">
+    <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Estado</th>
+        <th>Fecha/Hora</th>
+    </tr>
+    <tr th:each="pedido : ${pedidos}">
+        <td th:text="${pedido.producto}"></td>
+        <td th:text="${pedido.cantidad}"></td>
+        <td th:text="${pedido.precioUnitario}"></td>
+        <td th:text="${pedido.estado}"></td>
+        <td th:text="${pedido.fechaHora}"></td>
+    </tr>
+</table>
+<a th:href="@{'/mesas/' + ${mesa.id} + '/nuevo-pedido'}" class="btn">Nuevo Pedido</a>
+<a th:href="@{/mesas}" class="btn">Volver</a>
+</body>
+</html>

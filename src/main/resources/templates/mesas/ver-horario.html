@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Horario de la Mesa</title>
+</head>
+<body>
+<h1>Horario de la Mesa <span th:text="${mesa.id}"></span></h1>
+
+<div th:if="${horario != null}">
+  <p><strong>Hora Apertura:</strong> <span th:text="${horario.horaApertura}"></span></p>
+  <p><strong>Hora Cierre:</strong> <span th:text="${horario.horaCierre}"></span></p>
+  <p><strong>Día:</strong> <span th:text="${horario.dia}"></span></p>
+  <p><strong>Hora Feliz:</strong> <span th:text="${horario.horaFeliz} ? 'Sí' : 'No'"></span></p>
+</div>
+
+<div th:unless="${horario != null}">
+  <p>No se ha asignado horario a esta mesa.</p>
+</div>
+
+<a th:href="@{/mesas}" class="btn">Volver a Mesas</a>
+</body>
+</html>

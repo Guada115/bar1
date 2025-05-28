@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Mesas</title>
+</head>
+<body>
+<h1>Mesas del Bar</h1>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Capacidad</th>
+    <th>Ubicación</th>
+    <th>Estado</th>
+    <th>Tipo</th>
+    <th>Acciones</th>
+  </tr>
+  <tr th:each="mesa : ${mesas}">
+    <td th:text="${mesa.id}"></td>
+    <td th:text="${mesa.capacidad}"></td>
+    <td th:text="${mesa.ubicacion}"></td>
+    <td th:text="${mesa.estado}"></td>
+    <td th:text="${mesa.tipo}"></td>
+    <td>
+      <a th:href="@{'/mesas/' + ${mesa.id} + '/horario'}" class="btn">Ver Horario</a>
+    </td>
+  </tr>
+</table>
+<a th:href="@{/mesas/nueva}" class="btn">Nueva Mesa</a>
+<td>
+  <a th:href="@{'/mesas/' + ${mesa.id} + '/pedidos'}" class="btn">Ver Pedidos</a>
+  <a th:href="@{'/mesas/' + ${mesa.id} + '/nuevo-pedido'}" class="btn btn-success">+ Pedido</a>
+</td>
+</body>
+</html>

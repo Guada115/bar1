@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Crear Mesa y Horario</title>
+  <meta charset="UTF-8">
+
+</head>
+<body>
+<h1>Nueva Mesa con Horario</h1>
+<form th:action="@{/mesas/guardar-combined}" method="post">
+
+  <fieldset>
+    <legend>Datos de la Mesa</legend>
+
+    <label for="capacidad">Capacidad:</label>
+    <input type="number" id="capacidad" name="capacidad" min="1" required>
+
+    <label for="ubicacion">Ubicación:</label>
+    <select id="ubicacion" name="ubicacion" required>
+      <option value="">Seleccione...</option>
+      <option value="barra">Barra</option>
+      <option value="terraza">Terraza</option>
+      <option value="vip">VIP</option>
+      <option value="sofa">Sofá</option>
+    </select>
+
+    <label for="estado">Estado:</label>
+    <select id="estado" name="estado" required>
+      <option value="">Seleccione...</option>
+      <option th:each="estado : ${T(org.example.bar1.model.EstadoMesa).values()}"
+              th:value="${estado}"
+              th:text="${estado}"></option>
+    </select>
+
+    <label for="tipo">Tipo:</label>
+    <select id="tipo" name="tipo" required>
+      <option value="">Seleccione...</option>
+      <option th:each="tipo : ${T(org.example.bar1.model.TipoMesa).values()}"
+              th:value="${tipo}"
+              th:text="${tipo}"></option>
+    </select>
+  </fieldset>
+
+  <fieldset>
+    <legend>Horario</legend>
+
+    <label for="horaApertura">Hora Apertura:</label>
+    <input type="time" id="horaApertura" name="horaApertura" required>
+
+    <label for="horaCierre">Hora Cierre:</label>
+    <input type="time" id="horaCierre" name="horaCierre" required>
+
+    <label for="dia">Día:</label>
+    <select id="dia" name="dia" required>
+      <option value="">Seleccione...</option>
+      <option th:each="dia : ${T(org.example.bar1.model.DiaSemana).values()}"
+              th:value="${dia}"
+              th:text="${dia}"></option>
+    </select>
+
+    <label>
+      <input type="checkbox" name="horaFeliz"> ¿Hora Feliz?
+    </label>
+  </fieldset>
+
+  <button type="submit">Guardar Mesa y Horario</button>
+</form>
+</body>
+</html>

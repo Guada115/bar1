@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nuevo Pedido</title>
+</head>
+<body>
+<h1>Nuevo Pedido para Mesa <span th:text="${mesaId}"></span></h1>
+<form th:action="@{'/mesas/' + ${mesaId} + '/guardar-pedido'}" method="post">
+    Producto: <input type="text" name="producto" required><br>
+    Cantidad: <input type="number" name="cantidad" min="1" required><br>
+    Precio Unitario: <input type="number" name="precioUnitario" min="0" required><br>
+    <button type="submit">Guardar Pedido</button>
+</form>
+</body>
+</html>
