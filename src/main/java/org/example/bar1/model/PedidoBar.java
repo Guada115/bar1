@@ -12,7 +12,6 @@ public class PedidoBar {
     private int cantidad;
     private double precioUnitario;
     private EstadoPedido estado;
-    private LocalDateTime fechaHora;
     private Long mesaId;
 
     // Getters y Setters
@@ -26,8 +25,6 @@ public class PedidoBar {
     public void setPrecioUnitario(double precioUnitario) {this.precioUnitario = precioUnitario;}
     public EstadoPedido getEstado() {return estado;}
     public void setEstado(EstadoPedido estado) {this.estado = estado;}
-    public LocalDateTime getFechaHora() {return fechaHora;}
-    public void setFechaHora(LocalDateTime fechaHora) {this.fechaHora = fechaHora;}
     public Long getMesaId() {return mesaId;}
     public void setMesaId(Long mesaId) {this.mesaId = mesaId;}
 
