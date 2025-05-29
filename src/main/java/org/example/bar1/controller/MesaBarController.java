@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.example.bar1.model.EstadoPedido;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -114,14 +115,16 @@ public class MesaBarController {
             @PathVariable Long mesaId,
             @RequestParam String producto,
             @RequestParam int cantidad,
-            @RequestParam double precioUnitario) {
+            @RequestParam double precioUnitario,
+            @RequestParam EstadoPedido estado)
+                {
 
-        PedidoBar pedido = new PedidoBar();
-        pedido.setProducto(producto);
-        pedido.setCantidad(cantidad);
-        pedido.setPrecioUnitario(precioUnitario);
-        pedido.setEstado(EstadoPedido.PENDIENTE);
-        pedido.setMesaId(mesaId);
+                    PedidoBar pedido = new PedidoBar();
+                    pedido.setProducto(producto);
+                    pedido.setCantidad(cantidad);
+                    pedido.setPrecioUnitario(precioUnitario);
+                    pedido.setEstado(estado);
+                    pedido.setMesaId(mesaId);
 
         pedidoBarRepository.save(pedido);
         return "redirect:/mesas/" + mesaId + "/pedidos";

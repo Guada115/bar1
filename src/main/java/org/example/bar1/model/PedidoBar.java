@@ -24,7 +24,12 @@ public class PedidoBar {
     public double getPrecioUnitario() {return precioUnitario;}
     public void setPrecioUnitario(double precioUnitario) {this.precioUnitario = precioUnitario;}
     public EstadoPedido getEstado() {return estado;}
-    public void setEstado(EstadoPedido estado) {this.estado = estado;}
+    public void setEstado(EstadoPedido estado) {
+        if (estado == null) {
+            throw new IllegalArgumentException("Estado no puede ser nulo");
+        }
+        this.estado = estado;
+    }
     public Long getMesaId() {return mesaId;}
     public void setMesaId(Long mesaId) {this.mesaId = mesaId;}
 

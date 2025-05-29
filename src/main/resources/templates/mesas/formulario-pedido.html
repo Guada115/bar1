@@ -9,6 +9,14 @@
     Producto: <input type="text" name="producto" required><br>
     Cantidad: <input type="number" name="cantidad" min="1" required><br>
     Precio Unitario: <input type="number" name="precioUnitario" min="0" required><br>
+
+    Estado:
+    <select name="estado" required>
+        <option th:each="estado : ${T(org.example.bar1.model.EstadoPedido).values()}"
+                th:value="${estado}"
+                th:text="${estado}"></option>
+    </select><br>
+
     <button type="submit">Guardar Pedido</button>
 </form>
 </body>
