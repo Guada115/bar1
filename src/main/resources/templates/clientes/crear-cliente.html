@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Cliente</title>
+</head>
+<body>
+<h1>Nuevo Cliente</h1>
+<form action="#" th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" th:field="*{nombre}" required>
+  </div>
+  <div>
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" th:field="*{telefono}" required>
+  </div>
+  <div>
+    <label for="tipoCliente">Tipo de Cliente:</label>
+    <select id="tipoCliente" th:field="*{tipoCliente}" required>
+      <option th:each="tipo : ${T(org.example.bar1.model.TipoCliente).values()}"
+              th:value="${tipo}"
+              th:text="${tipo}"></option>
+    </select>
+  </div>
+  <div>
+    <label for="bebidaFavorita">Bebida Favorita:</label>
+    <input type="text" id="bebidaFavorita" th:field="*{bebidaFavorita}" required>
+  </div>
+  <button type="submit">Guardar</button>
+</form>
+</body>
+</html>

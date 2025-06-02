@@ -1,4 +1,5 @@
 package org.example.bar1.model;
+
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 

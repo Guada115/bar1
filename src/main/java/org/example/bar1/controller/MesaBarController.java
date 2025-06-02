@@ -2,6 +2,7 @@ package org.example.bar1.controller;
 
 
 import org.example.bar1.model.*;
+import org.example.bar1.repository.ClienteBarRepository;
 import org.example.bar1.repository.HorarioBarRepository;
 import org.example.bar1.repository.MesaBarRepository;
 import org.example.bar1.repository.PedidoBarRepository;
@@ -138,8 +139,5 @@ public class MesaBarController {
         model.addAttribute("pedidos", pedidoBarRepository.findByMesaId(mesaId));
         return "mesas/lista-pedidos";
     }
-
-
-
 
 }
