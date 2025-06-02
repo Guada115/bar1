@@ -1,14 +1,21 @@
 package org.example.bar1.controller;
 
 import org.example.bar1.model.ClienteBar;
+import org.example.bar1.model.HorarioBar;
 import org.example.bar1.model.TipoCliente;
 import org.example.bar1.repository.ClienteBarRepository;
+import org.example.bar1.repository.HorarioBarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.example.bar1.model.ClienteHorario;
+import org.example.bar1.repository.HorarioClienteRepository;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/clientes")
@@ -46,4 +53,39 @@ public class ClienteBarController {
         clienteBarRepository.save(cliente);
         return "redirect:/clientes";
     }
+
+    @Autowired
+    private HorarioBarRepository horarioBarRepository;
+
+    // Mostrar formulario para asignar horario a cliente
+
+    @GetMapping("/{clienteId}/asignar-horario")
+    public String mostrarFormularioAsignacion(
+            @PathVariable Long clienteId, Model model) {
+        model.addAttribute("cliente", clienteBarRepository.findById(clienteId).orElseThrow());
+
+        // Verifica que hay horarios disponibles
+        List<HorarioBar> horarios = (List<HorarioBar>) horarioBarRepository.findAll();
+        if (horarios.isEmpty()) {
+            // Si no hay horarios, puedes redirigir o mostrar un mensaje
+            return "redirect:/clientes?error=No hay horarios disponibles";
+        }
+        model.addAttribute("horariosDisponibles", horarios);
+        return "clientes/asignar-horario";
+    }
+
+    // Guardar asignación de horario a cliente
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @PostMapping("/{clienteId}/asignar-horario")
+    public String asignarHorarioACliente(
+            @PathVariable Long clienteId,
+            @RequestParam Long horarioId) {
+        String sql = "INSERT INTO cliente_horario (cliente_id, horario_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, clienteId, horarioId);
+        return "redirect:/clientes";
+    }
+
 }
+

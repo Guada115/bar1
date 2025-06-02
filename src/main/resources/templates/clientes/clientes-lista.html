@@ -19,6 +19,9 @@
     <td th:text="${cliente.telefono}"></td>
     <td th:text="${cliente.tipoCliente}"></td>
     <td th:text="${cliente.bebidaFavorita}"></td>
+    <td>
+      <a th:href="@{/clientes/{id}/asignar-horario(id=${cliente.id})}">Asignar Horario</a>
+    </td>
   </tr>
 </table>
 <a th:href="@{/clientes/nuevo}">Nuevo Cliente</a>

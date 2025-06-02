@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Asignar Horario a Cliente</title>
+</head>
+<body>
+<h1>Asignar Horario a: <span th:text="${cliente.nombre}"></span></h1>
+<form th:action="@{/clientes/{clienteId}/asignar-horario(clienteId=${cliente.id})}" method="post">
+    <select name="horarioId" required>
+        <option value="">-- Seleccione --</option>
+        <!-- Versión debug: muestra todos los campos del horario -->
+        <option th:each="horario : ${horariosDisponibles}"
+                th:value="${horario.id}"
+                th:text="${'ID: ' + horario.id}
+                   + ' | Día: ' + ${horario.dia}
+                   + ' | Apertura: ' + ${horario.horaApertura}
+                   + ' | Cierre: ' + ${horario.horaCierre}">
+        </option>
+    </select>
+    <button type="submit">Asignar</button>
+</form>
+<a th:href="@{/clientes}">Volver</a>
+</body>
+</html>
