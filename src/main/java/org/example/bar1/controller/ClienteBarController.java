@@ -87,5 +87,20 @@ public class ClienteBarController {
         return "redirect:/clientes";
     }
 
+    //Ver los horarios de un cliente
+    @GetMapping("/{clienteId}/horarios")
+    public String verHorariosCliente(
+            @PathVariable Long clienteId, Model model) {
+
+        //Obtener el cliente y su horario
+        ClienteBar cliente = clienteBarRepository.findById(clienteId).orElseThrow();
+        List<HorarioBar> horarios = horarioBarRepository.findHorariosByClienteId(clienteId);
+
+        model.addAttribute("cliente", cliente);
+        model.addAttribute("horarios", horarios);
+        return "clientes/horarios-cliente";
+    }
+
+
 }
 

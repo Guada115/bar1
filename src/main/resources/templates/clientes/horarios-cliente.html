@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="'Horarios de ' + ${cliente.nombre}"></title>
+</head>
+<body>
+<h1>Horarios asignados a: <span th:text="${cliente.nombre}"></span></h1>
+
+<table border="1">
+  <tr>
+    <th>Día</th>
+    <th>Hora Apertura</th>
+    <th>Hora Cierre</th>
+    <th>Hora Feliz</th>
+  </tr>
+  <tr th:each="horario : ${horarios}">
+    <td th:text="${horario.dia}"></td>
+    <td th:text="${horario.horaApertura}"></td>
+    <td th:text="${horario.horaCierre}"></td>
+    <td th:text="${horario.horaFeliz} ? 'Sí' : 'No'"></td>
+  </tr>
+</table>
+
+<a th:href="@{/clientes}">Volver a clientes</a>
+</body>
+</html>
