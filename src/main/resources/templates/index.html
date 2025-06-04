@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Bar App - Inicio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: #0b1225;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #0e1932;
+      padding: 0.5rem;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+    }
+    nav a:hover {
+      background: #272222;
+      border-radius: 4px;
+    }
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: box-shadow 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn {
+      display: inline-block;
+      background: #333;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+    .btn:hover {
+      background: #555;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Sistema de gestión de bar CES2</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a th:href="@{/}">Inicio</a></li>
+    <li><a th:href="@{/clientes}">Clientes</a></li>
+    <li><a th:href="@{/mesas}">Mesas</a></li>
+    <li><a th:href="@{/horarios}">Horarios</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h2>Menú Principal</h2>
+
+  <div class="menu-grid">
+    <div class="card">
+      <h3>Clientes</h3>
+      <p>Gestiona la información de los clientes</p>
+      <a th:href="@{/clientes}" class="btn">Ir a Clientes</a>
+    </div>
+
+    <div class="card">
+      <h3>Mesas</h3>
+      <p>Administrar las mesas del bar</p>
+      <a th:href="@{/mesas}" class="btn">Ir a Mesas</a>
+    </div>
+
+    <div class="card">
+      <h3>Horarios</h3>
+      <p>Administrar los horarios del bar</p>
+      <a th:href="@{/horarios}" class="btn">Ir a Horarios</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Sistema de Gestión del Bar &copy; 2023</p>
+</footer>
+</body>
+</html>
