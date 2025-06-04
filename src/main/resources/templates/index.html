@@ -9,33 +9,17 @@
       margin: 0;
       padding: 0;
       line-height: 1.6;
+      background-color: #121212;
+      color: #e0e0e0;
     }
     header {
-      background: #0b1225;
-      color: white;
-      padding: 1rem;
+      background: #1a1a2e;
+      color: #ffffff;
+      padding: 2rem;
       text-align: center;
+      border-bottom: 2px solid #0d47a1;
     }
-    nav {
-      background: #0e1932;
-      padding: 0.5rem;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-    }
-    nav a:hover {
-      background: #272222;
-      border-radius: 4px;
-    }
+
     main {
       padding: 2rem;
       max-width: 1200px;
@@ -44,30 +28,59 @@
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
+      gap: 1.5rem;
       margin-top: 2rem;
     }
     .card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 1.5rem;
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 1.8rem;
       text-align: center;
-      transition: box-shadow 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     .card:hover {
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      border-color: #0d47a1;
+    }
+    .card h3 {
+      color: #bb86fc;
+      margin-top: 0;
     }
     .btn {
       display: inline-block;
-      background: #333;
+      background: #0d47a1;
       color: white;
-      padding: 0.5rem 1rem;
+      padding: 0.7rem 1.5rem;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: 6px;
       margin-top: 1rem;
+      transition: background 0.3s;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
     }
     .btn:hover {
-      background: #555;
+      background: #1565c0;
+    }
+    footer {
+      background: #1a1a2e;
+      color: #ffffff;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      border-top: 2px solid #0d47a1;
+    }
+    h2 {
+      color: #bb86fc;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+    .card p {
+      color: #b0b0b0;
     }
     footer {
       background: #333;
@@ -80,17 +93,8 @@
 </head>
 <body>
 <header>
-  <h1>Sistema de gestión de bar CES2</h1>
+  <h1>SISTEMA DE GESTION DE BAR CES2</h1>
 </header>
-
-<nav>
-  <ul>
-    <li><a th:href="@{/}">Inicio</a></li>
-    <li><a th:href="@{/clientes}">Clientes</a></li>
-    <li><a th:href="@{/mesas}">Mesas</a></li>
-    <li><a th:href="@{/horarios}">Horarios</a></li>
-  </ul>
-</nav>
 
 <main>
   <h2>Menú Principal</h2>
@@ -117,7 +121,7 @@
 </main>
 
 <footer>
-  <p>Sistema de Gestión del Bar &copy; 2023</p>
+  <p>Trabajo gestion de bar JDBC CES2 &copy; 2025-1</p>
 </footer>
 </body>
 </html>

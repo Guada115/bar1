@@ -5,6 +5,66 @@
   <title>Crear Cliente</title>
 </head>
 <body>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    margin: 0;
+    padding: 20px;
+    color: #e0e0e0;
+  }
+
+  h1 {
+    color: #bb86fc;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  form {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #333;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #bb86fc;
+  }
+
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #252525;
+    color: #e0e0e0;
+  }
+
+  button {
+    background-color: #0d47a1;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background-color: #1565c0;
+  }
+</style>
 <h1>Nuevo Cliente</h1>
 <form action="#" th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
   <div>

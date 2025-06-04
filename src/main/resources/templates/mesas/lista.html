@@ -2,36 +2,128 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Lista de Mesas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    header {
+      background: #1a1a2e;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 2px solid #0d47a1;
+    }
+    h1 {
+      color: #bb86fc;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      background-color: #1e1e1e;
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+    th {
+      background-color: #0d47a1;
+      color: white;
+      font-weight: bold;
+    }
+    tr:hover {
+      background-color: #252525;
+    }
+    .actions {
+      white-space: nowrap;
+      text-align: center;
+      color: #ffffff;
+    }
+    .btn {
+      display: inline-block;
+      background: #0d47a1;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      border-radius: 6px;
+      margin: 0.5rem;
+      transition: background 0.3s;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #1565c0;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background: #333;
+    }
+    .btn-secondary:hover {
+      background: #444;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    a.link {
+      color: #bb86fc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a.link:hover {
+      color: #d1b3ff;
+      text-decoration: underline;
+    }
+
+  </style>
 
 </head>
 <body>
 <h1>Mesas del Bar</h1>
-<table border="1">
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Capacidad</th>
-    <th>Ubicación</th>
-    <th>Estado</th>
-    <th>Tipo</th>
-    <th>Acciones</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="mesa : ${mesas}">
-    <td th:text="${mesa.id}"></td>
-    <td th:text="${mesa.capacidad}"></td>
-    <td th:text="${mesa.ubicacion}"></td>
-    <td th:text="${mesa.estado}"></td>
-    <td th:text="${mesa.tipo}"></td>
-    <td>
-      <a th:href="@{'/mesas/' + ${mesa.id} + '/pedidos'}" class="btn">Pedidos</a>
-      <a th:href="@{'/mesas/' + ${mesa.id} + '/horario'}" class="btn">Horario</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<a th:href="@{/mesas/nueva}" class="btn">Nueva Mesa</a>
-<a th:href="@{/}" class="btn">Volver al Inicio</a>
+<div class="container">
+      <p>Lista de mesas disponibles en el bar. Puedes ver los pedidos y horarios de cada mesa.</p>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Capacidad</th>
+        <th>Ubicación</th>
+        <th>Estado</th>
+        <th>Tipo</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="mesa : ${mesas}">
+        <td th:text="${mesa.id}"></td>
+        <td th:text="${mesa.capacidad}"></td>
+        <td th:text="${mesa.ubicacion}"></td>
+        <td th:text="${mesa.estado}"></td>
+        <td th:text="${mesa.tipo}"></td>
+        <td class="actions">
+          <a th:href="@{'/mesas/' + ${mesa.id} + '/pedidos'}" class="btn">Pedidos</a>
+          <a th:href="@{'/mesas/' + ${mesa.id} + '/horario'}" class="btn">Horario</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+<div class="btn-container">
+    <a class="btn" th:href="@{/mesas/nueva}">Nueva Mesa</a>
+    <a class="btn btn-secondary" th:href="@{/}">Volver al Inicio</a>
+</div>
+</div>
 </body>
 </html>

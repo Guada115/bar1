@@ -4,70 +4,129 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Clientes del Bar</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    header {
+      background: #1a1a2e;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 2px solid #0d47a1;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     h1 {
-      color: #343a40;
-      margin-top: 20px;
+      color: #bb86fc;
       text-align: center;
+      margin-bottom: 2rem;
     }
     table {
-      width: 80%;
-      margin: auto;
-      margin-top: 20px;
+      width: 100%;
       border-collapse: collapse;
+      margin: 1rem 0;
+      background-color: #282727;
     }
     th, td {
-      padding: 10px;
+      padding: 12px 15px;
       text-align: left;
+      border-bottom: 1px solid #333;
     }
     th {
-      background-color: #343a40;
+      background-color: #0d47a1;
       color: white;
+      font-weight: bold;
     }
-    a {
-      color: #007bff;
-      text-decoration: none;
+    tr:hover {
+      background-color: #252525;
     }
-    a:hover {
-      text-decoration: underline;
+    .actions {
+      white-space: nowrap;
+        text-align: center;
+        color: #ffffff;
     }
     .btn {
-      margin: 10px;
+      display: inline-block;
+      background: #0d47a1;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      border-radius: 6px;
+      margin: 0.5rem;
+      transition: background 0.3s;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
     }
-
-
+    .btn:hover {
+      background: #1565c0;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background: #333;
+    }
+    .btn-secondary:hover {
+      background: #444;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    a.link {
+      color: #bb86fc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a.link:hover {
+      color: #d1b3ff;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-<h1>Clientes Registrados</h1>
-<table border="1">
-  <tr>
-    <th>ID</th>
-    <th>Nombre</th>
-    <th>Teléfono</th>
-    <th>Tipo</th>
-    <th>Bebida Favorita</th>
-  </tr>
-  <tr th:each="cliente : ${clientes}">
-    <td th:text="${cliente.id}"></td>
-    <td th:text="${cliente.nombre}"></td>
-    <td th:text="${cliente.telefono}"></td>
-    <td th:text="${cliente.tipoCliente}"></td>
-    <td th:text="${cliente.bebidaFavorita}"></td>
-    <td>
-      <a th:href="@{/clientes/{id}/asignar-horario(id=${cliente.id})}">Asignar Horario</a>
-    </td>
-    <td>
-      <a th:href="@{/clientes/{id}/horarios(id=${cliente.id})}">Ver Horarios</a>
-    </td>
-  </tr>
-</table>
-<a th:href="@{/clientes/nuevo}">Nuevo Cliente</a>
-<a th:href="@{/}">Volver al Inicio</a>
+<header>
+  <h1>GESTIÓN DE CLIENTES</h1>
+</header>
+
+<div class="container">
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Tipo</th>
+      <th>Bebida Favorita</th>
+      <th class="actions">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cliente : ${clientes}">
+      <td th:text="${cliente.id}"></td>
+      <td th:text="${cliente.nombre}"></td>
+      <td th:text="${cliente.telefono}"></td>
+      <td th:text="${cliente.tipoCliente}"></td>
+      <td th:text="${cliente.bebidaFavorita}"></td>
+      <td class="actions">
+        <a  th:href="@{/clientes/{id}/asignar-horario(id=${cliente.id})}"class="btn">Asignar Horario</a> |
+        <a  th:href="@{/clientes/{id}/horarios(id=${cliente.id})}"class="btn">Ver Horarios</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="btn-container">
+    <a class="btn" th:href="@{/clientes/nuevo}">Nuevo Cliente</a>
+    <a class="btn btn-secondary" th:href="@{/}">Volver al Inicio</a>
+  </div>
+</div>
 </body>
 </html>

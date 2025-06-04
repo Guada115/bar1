@@ -5,24 +5,91 @@
   <title th:text="'Horarios de ' + ${cliente.nombre}"></title>
 </head>
 <body>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  header {
+    background: #1a1a2e;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #0d47a1;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  h1 {
+    color: #bb86fc;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background-color: #1e1e1e;
+  }
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+  }
+  .btn {
+    display: inline-block;
+    background: #0d47a1;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 0.5rem;
+    transition: background 0.3s;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: #1565c0;
+    text-decoration: none;
+  }
+  .btn-secondary {
+    background: #333;
+  }
+  .btn-secondary:hover {
+    background: #444;
+  }
+  .btn-container {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+</style>
 <h1>Horarios asignados a: <span th:text="${cliente.nombre}"></span></h1>
-
-<table border="1">
-  <tr>
-    <th>Día</th>
-    <th>Hora Apertura</th>
-    <th>Hora Cierre</th>
-    <th>Hora Feliz</th>
-  </tr>
-  <tr th:each="horario : ${horarios}">
-    <td th:text="${horario.dia}"></td>
-    <td th:text="${horario.horaApertura}"></td>
-    <td th:text="${horario.horaCierre}"></td>
-    <td th:text="${horario.horaFeliz} ? 'Sí' : 'No'"></td>
-  </tr>
-</table>
-
-<a th:href="@{/clientes}">Volver a clientes</a>
-<a th:href="@{/}">Volver al Inicio</a>
+<div class ="container">
+    <table>
+      <tr>
+        <th>Día</th>
+        <th>Hora Apertura</th>
+        <th>Hora Cierre</th>
+        <th>Hora Feliz</th>
+      </tr>
+      <tr th:each="horario : ${horarios}">
+        <td th:text="${horario.dia}"></td>
+        <td th:text="${horario.horaApertura}"></td>
+        <td th:text="${horario.horaCierre}"></td>
+        <td th:text="${horario.horaFeliz} ? 'Sí' : 'No'"></td>
+      </tr>
+    </table>
+  <div class="btn-container">
+    <a class="btn" th:href="@{/clientes}">Volver a clientes</a>
+    <a class="btn btn-secondary"th:href="@{/}">Volver al Inicio</a>
+    </div>
+</div>
 </body>
 </html>
