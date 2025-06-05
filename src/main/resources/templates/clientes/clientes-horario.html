@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="icon" type="image/png" href="/logo/Wu-Tang-Logo.png">
+  <meta charset="UTF-8">
+  <title>Clientes del Horario</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #bb86fc;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #1e1e1e;
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+    th {
+      background-color: #0d47a1;
+      color: white;
+    }
+    .btn {
+      display: inline-block;
+      background: #0d47a1;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background: #1565c0;
+    }
+    .btn-secondary {
+      background: #333;
+    }
+    .btn-secondary:hover {
+      background: #444;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 th:text="'Clientes del horario: ' + ${horario.dia}"></h1>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Tipo</th>
+      <th>Bebida Favorita</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cliente : ${clientes}">
+      <td th:text="${cliente.id}"></td>
+      <td th:text="${cliente.nombre}"></td>
+      <td th:text="${cliente.telefono}"></td>
+      <td th:text="${cliente.tipoCliente}"></td>
+      <td th:text="${cliente.bebidaFavorita}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="btn-container">
+  <a th:href="@{/clientes/horarios}" class="btn">Atrás</a>
+  <a class="btn btn-secondary" th:href="@{/}">Inicio</a>
+    </div>
+</div>
+</body>
+</html>
