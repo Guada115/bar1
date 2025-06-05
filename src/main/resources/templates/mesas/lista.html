@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="icon" type="image/png" href="/logo/Wu-Tang-Logo.png">
   <title>Lista de Mesas</title>
   <style>
     body {
@@ -94,36 +95,36 @@
 <body>
 <h1>Mesas del Bar</h1>
 <div class="container">
-      <p>Lista de mesas disponibles en el bar. Puedes ver los pedidos y horarios de cada mesa.</p>
-    <table>
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>Capacidad</th>
-        <th>Ubicación</th>
-        <th>Estado</th>
-        <th>Tipo</th>
-        <th>Acciones</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="mesa : ${mesas}">
-        <td th:text="${mesa.id}"></td>
-        <td th:text="${mesa.capacidad}"></td>
-        <td th:text="${mesa.ubicacion}"></td>
-        <td th:text="${mesa.estado}"></td>
-        <td th:text="${mesa.tipo}"></td>
-        <td class="actions">
-          <a th:href="@{'/mesas/' + ${mesa.id} + '/pedidos'}" class="btn">Pedidos</a>
-          <a th:href="@{'/mesas/' + ${mesa.id} + '/horario'}" class="btn">Horario</a>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-<div class="btn-container">
-    <a class="btn" th:href="@{/mesas/nueva}">Nueva Mesa</a>
-    <a class="btn btn-secondary" th:href="@{/}">Volver al Inicio</a>
-</div>
+        <p>Lista de mesas disponibles en el bar. Puedes ver los pedidos y horarios de cada mesa.</p>
+      <table>
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Capacidad</th>
+          <th>Ubicación</th>
+          <th>Estado</th>
+          <th>Tipo</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mesa : ${mesas}">
+          <td th:text="${mesa.id}"></td>
+          <td th:text="${mesa.capacidad}"></td>
+          <td th:text="${mesa.ubicacion}"></td>
+          <td th:text="${mesa.estado}"></td>
+          <td th:text="${mesa.tipo}"></td>
+          <td class="actions">
+            <a class="btn" th:href="@{'/mesas/' + ${mesa.id} + '/pedidos'}">Pedidos</a>
+            <a class="btn"  th:href="@{'/mesas/' + ${mesa.id} + '/horario'}">Horario</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    <div class="btn-container">
+        <a class="btn" th:href="@{/mesas/nueva}">Nueva Mesa</a>
+        <a class="btn btn-secondary" th:href="@{/}">Inicio</a>
+    </div>
 </div>
 </body>
 </html>

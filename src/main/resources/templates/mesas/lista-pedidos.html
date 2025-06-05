@@ -1,28 +1,112 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="icon" type="image/png" href="/logo/Wu-Tang-Logo.png">
     <title>Pedidos de Mesa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        header {
+            background: #1a1a2e;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #0d47a1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        h1 {
+            color: #bb86fc;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background-color: #282727;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #0d47a1;
+            color: white;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #252525;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .btn {
+            display: inline-block;
+            background: #0d47a1;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 0.5rem;
+            transition: background 0.3s;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #1565c0;
+            text-decoration: none;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .btn-secondary {
+            background: #333;
+        }
+        .btn-secondary:hover {
+            background: #444;
+        }
+    </style>
 </head>
 <body>
 <h1>Pedidos de Mesa <span th:text="${mesa.id}"></span></h1>
-<table border="1">
-    <tr>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Estado</th>
+<div class="container">
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Estado</th>
 
-    </tr>
-    <tr th:each="pedido : ${pedidos}">
-        <td th:text="${pedido.producto}"></td>
-        <td th:text="${pedido.cantidad}"></td>
-        <td th:text="${pedido.precioUnitario}"></td>
-        <td th:text="${pedido.estado}"></td>
+        </tr>
+        <tr th:each="pedido : ${pedidos}">
+            <td th:text="${pedido.producto}"></td>
+            <td th:text="${pedido.cantidad}"></td>
+            <td th:text="${pedido.precioUnitario}"></td>
+            <td th:text="${pedido.estado}"></td>
 
-    </tr>
-</table>
-<a th:href="@{'/mesas/' + ${mesa.id} + '/nuevo-pedido'}" class="btn">Nuevo Pedido</a>
-<a th:href="@{/mesas}" class="btn">Volver</a>
-<a th:href="@{/}" class="btn">Inicio</a>
+        </tr>
+
+    </table>
+</div>
+    <div class="btn-container">
+        <a class="btn" th:href="@{'/mesas/' + ${mesa.id} + '/nuevo-pedido'}">Nuevo Pedido</a>
+
+        <a class="btn" th:href="@{/mesas}">Atrás</a>
+        <a class="btn btn-secondary" th:href="@{/}">Inicio</a>
+</div>
 </body>
 </html>

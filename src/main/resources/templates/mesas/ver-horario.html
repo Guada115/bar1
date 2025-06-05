@@ -1,22 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <link rel="icon" type="image/png" href="/logo/Wu-Tang-Logo.png">
   <title>Horario de la Mesa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    header {
+      background: #1a1a2e;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 2px solid #0d47a1;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      color: #bb86fc;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      display: inline-block;
+      background: #0d47a1;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      border-radius: 6px;
+      margin: 0.5rem;
+      transition: background 0.3s;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #1565c0;
+      text-decoration: none;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .btn-secondary {
+      background: #333;
+    }
+    .btn-secondary:hover {
+      background: #444;
+    }
+  </style>
 </head>
 <body>
 <h1>Horario de la Mesa <span th:text="${mesa.id}"></span></h1>
+<div class="container">
+  <div th:if="${horario != null}">
+    <p><strong>Hora Apertura:</strong> <span th:text="${horario.horaApertura}"></span></p>
+    <p><strong>Hora Cierre:</strong> <span th:text="${horario.horaCierre}"></span></p>
+    <p><strong>Día:</strong> <span th:text="${horario.dia}"></span></p>
+    <p><strong>Hora Feliz:</strong> <span th:text="${horario.horaFeliz} ? 'Sí' : 'No'"></span></p>
+  </div>
 
-<div th:if="${horario != null}">
-  <p><strong>Hora Apertura:</strong> <span th:text="${horario.horaApertura}"></span></p>
-  <p><strong>Hora Cierre:</strong> <span th:text="${horario.horaCierre}"></span></p>
-  <p><strong>Día:</strong> <span th:text="${horario.dia}"></span></p>
-  <p><strong>Hora Feliz:</strong> <span th:text="${horario.horaFeliz} ? 'Sí' : 'No'"></span></p>
+  <div th:unless="${horario != null}">
+    <p>No se ha asignado horario a esta mesa.</p>
+  </div>
 </div>
-
-<div th:unless="${horario != null}">
-  <p>No se ha asignado horario a esta mesa.</p>
+<div class="btn-container">
+  <a class="btn" th:href="@{/mesas}">Atrás</a>
+  <a class="btn btn-secondary" th:href="@{/mesas}">Inicio</a>
 </div>
-
-<a th:href="@{/mesas}" class="btn">Volver a Mesas</a>
 </body>
 </html>
